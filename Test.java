@@ -5,16 +5,20 @@ public class Test {
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
-
+         // declaring new array 3 * 3 where the the game takes place
         char[][] ticTacToe = new char[3][3];
         for (int i = 0; i < 9; i++) {
             ticTacToe [i % 3][i / 3] = ' ';
         }
-
+        
+        // start playing Tic-tac-toe :
         play(ticTacToe);
-
+        
     }
-
+    
+    /* 
+        function for printing the current state of the game 
+    */
     public static void printTheGame (char[][] game) {
         System.out.println("---------");
         for (int i = 0; i < 3; i++) {
@@ -26,7 +30,15 @@ public class Test {
         }
         System.out.println("---------");
     }
-
+    
+    /*
+        playing the Game :
+            1 # input: the cell where user wants to play
+            2 # check: if the player entered a valid input
+            3 # check: if the play's chosen cell that already been occupied
+            4 # print: current game state after the new move is played
+            5 # check: after 5 moves one of the playes reach 3 moves and the other one 2 moves so we check if there's a winner 
+    */
     public static void play (char game[][]) {
 
         Scanner input = new Scanner(System.in);
@@ -71,6 +83,7 @@ public class Test {
 
             int winner = 0;
             if (freeCellsCounter <= 4) {
+                // returned value carring winner name or no winner
                 winner = checkingWinner(game);
             }
 
@@ -89,6 +102,10 @@ public class Test {
         }
     }
 
+    
+    /* 
+        checking winner: 3 in arow , 3 in a coulmn or 3 diagonally 
+    */
     public static int checkingWinner (char[][] game) {
 
         // 0 --> non, 1 --> X, 2 --> O
